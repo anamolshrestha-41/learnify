@@ -1,0 +1,101 @@
+StudentID,Name,Gender,Age,Attendance,Grade,Department
+S001,Aarav Sharma,Male,20,92,88,Computer Science
+S002,Anisha Thapa,Female,21,95,94,Information Technology
+S003,Bibek Gurung,Male,19,85,76,Business
+S004,Prakriti Shrestha,Female,22,89,91,Computer Science
+S005,Suman Rai,Male,20,78,68,Engineering
+S006,Sneha Karki,Female,19,96,97,Information Technology
+S007,Rohan Tamang,Male,21,88,82,Business
+S008,Asmita Poudel,Female,20,91,89,Engineering
+S009,Nischal Bista,Male,22,73,65,Computer Science
+S010,Samiksha Adhikari,Female,21,94,93,Information Technology
+S011,Ayush KC,Male,19,87,79,Engineering
+S012,Riya Shahi,Female,20,90,86,Business
+S013,Sujan Lama,Male,23,81,72,Computer Science
+S014,Elina Joshi,Female,19,97,98,Information Technology
+S015,Prabin Magar,Male,21,84,75,Engineering
+S016,Kritika Gurung,Female,22,93,90,Business
+S017,Rajesh Bhandari,Male,20,76,69,Computer Science
+S018,Manisha Basnet,Female,21,88,84,Engineering
+S019,Sagar Khadka,Male,19,95,92,Information Technology
+S020,Alisha Maharjan,Female,20,86,81,Business
+S021,Roshan Shrestha,Male,22,91,87,Computer Science
+S022,Diya Gautam,Female,19,98,99,Information Technology
+S023,Kiran Thapa,Male,21,79,71,Engineering
+S024,Salina Rai,Female,23,85,78,Business
+S025,Nabin Gurung,Male,20,90,85,Computer Science
+S026,Anu Panta,Female,21,92,88,Engineering
+S027,Bimal Shrestha,Male,19,83,74,Information Technology
+S028,Sarita Karki,Female,20,96,95,Computer Science
+S029,Deepak Tamang,Male,22,77,67,Business
+S030,Nisha Adhikari,Female,19,89,83,Engineering
+S031,Rupesh Joshi,Male,21,93,90,Information Technology
+S032,Karuna Bista,Female,22,87,80,Computer Science
+S033,Manoj KC,Male,20,82,73,Engineering
+S034,Sushmita Lama,Female,21,94,91,Business
+S035,Ashish Magar,Male,19,88,86,Computer Science
+S036,Puja Bhandari,Female,20,91,89,Information Technology
+S037,Ramesh Khadka,Male,23,75,66,Engineering
+S038,Shristi Poudel,Female,21,97,96,Business
+S039,Anmol Rai,Male,20,89,84,Computer Science
+S040,Binita Shahi,Female,19,93,92,Information Technology
+S041,Suraj Gurung,Male,22,86,78,Engineering
+S042,Neha Thapa,Female,20,90,87,Business
+S043,Prakash Tamang,Male,21,80,70,Computer Science
+S044,Menuka Shrestha,Female,23,95,94,Information Technology
+S045,Sandesh Bista,Male,19,92,88,Engineering
+S046,Aastha Karki,Female,21,98,97,Computer Science
+S047,Naresh Poudel,Male,20,84,76,Business
+S048,Swastika Adhikari,Female,22,89,85,Engineering
+S049,Rabin KC,Male,21,87,80,Information Technology
+S050,Rekha Joshi,Female,19,96,93,Computer Science
+S051,Arjun Shrestha,Male,20,90,91,Computer Science
+S052,Shraddha Thapa,Female,21,94,96,Information Technology
+S053,Pramod Gurung,Male,22,82,77,Business
+S054,Anjali Rai,Female,20,91,90,Engineering
+S055,Sunil Karki,Male,19,79,72,Computer Science
+S056,Isha Poudel,Female,23,97,98,Information Technology
+S057,Bikash Tamang,Male,21,85,81,Business
+S058,Reema Shrestha,Female,20,88,86,Engineering
+S059,Manish Bista,Male,22,93,89,Computer Science
+S060,Saroj Adhikari,Male,19,74,64,Business
+S061,Sandhya Karki,Female,21,95,94,Information Technology
+S062,Krishna Rai,Male,20,89,83,Engineering
+S063,Sweta Gurung,Female,22,92,91,Computer Science
+S064,Niraj Thapa,Male,21,81,75,Business
+S065,Aayusha Shrestha,Female,19,98,99,Information Technology
+S066,Rajiv Poudel,Male,20,86,79,Engineering
+S067,Muskan Bista,Female,21,90,88,Computer Science
+S068,Samir KC,Male,23,83,74,Business
+S069,Ankita Rai,Female,20,96,95,Engineering
+S070,Devendra Gurung,Male,19,92,87,Information Technology
+S071,Shreya Thapa,Female,22,94,93,Computer Science
+S072,Rajan Shrestha,Male,21,78,69,Engineering
+S073,Asmita Rai,Female,20,89,85,Business
+S074,Abhishek Karki,Male,19,91,90,Information Technology
+S075,Prerana Poudel,Female,21,97,96,Computer Science
+S076,Rojan Bista,Male,22,84,78,Engineering
+S077,Anusha Gurung,Female,20,93,92,Business
+S078,Kapil Thapa,Male,21,87,82,Computer Science
+S079,Sapana Shrestha,Female,19,95,94,Information Technology
+S080,Subash Rai,Male,23,80,71,Engineering
+S081,Menuka Karki,Female,20,90,89,Computer Science
+S082,Ramesh Poudel,Male,21,88,76,Business
+S083,Aditi Bista,Female,22,96,97,Information Technology
+S084,Santosh Gurung,Male,19,83,73,Engineering
+S085,Sanjana Thapa,Female,20,92,90,Computer Science
+S086,Bishal Shrestha,Male,21,85,80,Business
+S087,Alina Rai,Female,19,98,98,Information Technology
+S088,Sushil Karki,Male,22,90,86,Engineering
+S089,Pratima Poudel,Female,21,94,93,Computer Science
+S090,Ritesh Bista,Male,20,79,68,Business
+S091,Karishma Gurung,Female,23,91,88,Information Technology
+S092,Dinesh Thapa,Male,19,86,77,Engineering
+S093,Shruti Shrestha,Female,20,97,95,Computer Science
+S094,Amrit Rai,Male,21,89,84,Business
+S095,Manisha Karki,Female,22,93,91,Information Technology
+S096,Binod Poudel,Male,20,81,72,Engineering
+S097,Rachana Bista,Female,19,95,96,Computer Science
+S098,Sujal Gurung,Male,21,88,83,Business
+S099,Ayushi Thapa,Female,20,99,99,Information Technology
+S100,Pranish Shrestha,Male,22,92,89,Engineering
