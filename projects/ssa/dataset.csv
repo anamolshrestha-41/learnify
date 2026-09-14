@@ -1,0 +1,6 @@
+employee_id,age,experience,education,job_role,salary
+E001,22,1,Bachelor,Junior Developer,35000
+E002,25,2,Bachelor,Data Analyst,42000
+E003,28,4,Master,Data Analyst,55000
+E004,30,6,Master,Software Engineer,70000
+E005,35,10,Master,Senior Engineer,95000
