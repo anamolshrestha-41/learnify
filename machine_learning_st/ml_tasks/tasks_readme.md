@@ -78,3 +78,18 @@ Answer:
 3. How did the coefficients change as alpha increased?
 4. Did strong regularization improve or hurt performance?
 5. Which model would you choose and why?
+   
+## task: 5
+1. Train Linear Regression, Ridge (alpha=1) and Lasso (alpha=0.1).
+2. Use StandardScaler in the Ridge and Lasso Pipelines.
+3. Calculate MAE, RMSE and R² for each model.
+4. Print the Ridge and Lasso coefficients.
+5. Try Lasso with alpha=0.001, 0.01, 0.1, 1 and 10.
+6. Record how many coefficients become zero at each alpha.
+Create a comparison table:
+Model	Alpha	MAE	RMSE	R²	Zero coefficients
+Linear Regression	—				0
+Ridge	1				
+Lasso	0.01				
+Lasso	0.1				
+Lasso	1 
