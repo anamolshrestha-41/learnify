@@ -93,3 +93,14 @@ Ridge	1
 Lasso	0.01				
 Lasso	0.1				
 Lasso	1 
+
+
+## TASK 6:
+Practice task
+Train Ridge, Lasso and Elastic Net on the same training split.
+1. Use StandardScaler inside each Pipeline.
+2. Try multiple alpha values.
+3. For Elastic Net, try l1_ratio values of 0.2, 0.5 and 0.8.
+4. Record MAE, RMSE, R² and the number of zero coefficients.
+5. Identify the best validation configuration.
+6. Explain why it performed better than the alternatives.
