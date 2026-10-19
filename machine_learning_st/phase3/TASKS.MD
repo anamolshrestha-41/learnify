@@ -76,3 +76,13 @@ Practice checklist
 [ ] Compare their test accuracy.
 [ ] Predict the species of a new flower.
 [ ] Print the predicted probabilities for all three species.
+
+
+## TAsk 4:
+Use the Iris dataset and complete these tasks:
+- [ ] Train KNN with K = 3.
+- [ ] Train KNN with K = 7.
+- [ ] Compare their test accuracy.
+- [ ] Predict the species of a new flower.
+- [ ] Explain in your own words why scaling is important for KNN.
+- [ ] Explain what could happen if K is too small.
