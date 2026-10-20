@@ -86,3 +86,13 @@ Use the Iris dataset and complete these tasks:
 - [ ] Predict the species of a new flower.
 - [ ] Explain in your own words why scaling is important for KNN.
 - [ ] Explain what could happen if K is too small.
+  
+## TAsk 5:
+Your practice task
+Using the Iris dataset:
+- [ ] Train a Decision Tree with max_depth=2.
+- [ ] Train another with max_depth=5.
+- [ ] Compare training accuracy and test accuracy.
+- [ ] Visualize both trees.
+- [ ] Change criterion="gini" to criterion="entropy" and compare.
+- [ ] Explain why a very deep tree can overfit.
