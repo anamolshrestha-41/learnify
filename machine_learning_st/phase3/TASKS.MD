@@ -96,3 +96,14 @@ Using the Iris dataset:
 - [ ] Visualize both trees.
 - [ ] Change criterion="gini" to criterion="entropy" and compare.
 - [ ] Explain why a very deep tree can overfit.
+  
+## Task 6:
+Your practice task
+Use the Iris dataset and complete these tasks:
+- [ ] Train a Random Forest with 50 trees.
+- [ ] Train another with 200 trees.
+- [ ] Compare training and test accuracy.
+- [ ] Print the feature importances.
+- [ ] Create a bar chart of feature importance.
+- [ ] Predict a new flower and display its class probabilities.
+- [ ] Explain why Random Forest uses different samples and features for its trees.
