@@ -107,3 +107,15 @@ Use the Iris dataset and complete these tasks:
 - [ ] Create a bar chart of feature importance.
 - [ ] Predict a new flower and display its class probabilities.
 - [ ] Explain why Random Forest uses different samples and features for its trees.
+  
+
+## Task 7: 
+Your practice task
+Use the Iris dataset and complete these tasks:
+- [ ] Train SVM with kernel="linear".
+- [ ] Train SVM with kernel="rbf".
+- [ ] Compare their training and test accuracy.
+- [ ] Try C=0.1, C=1, and C=100.
+- [ ] For the RBF kernel, compare gamma="scale" with gamma=0.1 and gamma=10.
+- [ ] Explain why feature scaling matters.
+- [ ] Explain what support vectors and the margin mean in simple English.
