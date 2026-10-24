@@ -119,3 +119,15 @@ Use the Iris dataset and complete these tasks:
 - [ ] For the RBF kernel, compare gamma="scale" with gamma=0.1 and gamma=10.
 - [ ] Explain why feature scaling matters.
 - [ ] Explain what support vectors and the margin mean in simple English.
+  
+
+## Task 8:
+Your practice task
+Using the Iris dataset:
+- [ ] Train a GaussianNB model.
+- [ ] Print training and test accuracy.
+- [ ] Display the confusion matrix.
+- [ ] Print predicted probabilities for three test examples.
+- [ ] Compare its test accuracy with your Random Forest model.
+- [ ] Explain why Naive Bayes is called “naive.”
+- [ ] Explain the difference between GaussianNB and MultinomialNB.
