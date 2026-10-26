@@ -5,3 +5,11 @@
 - [ ] Plot the clusters for each model.
 - [ ] Display the cluster centers in the original units.
 - [ ] Create an elbow graph.
+
+## Task 2:
+Your task
+Use the same dataset and complete these tasks:
+- [ ] Change n_clusters from 3 to 2.
+- [ ] Change it to 4.
+- [ ] Plot the clusters each time.
+- [ ] Generate and study the dendrogram.
