@@ -13,3 +13,10 @@ Use the same dataset and complete these tasks:
 - [ ] Change it to 4.
 - [ ] Plot the clusters each time.
 - [ ] Generate and study the dendrogram.
+
+## Task3:
+
+Your task
+- [ ] Change eps to 0.3, then 0.8.
+- [ ] Change min_samples to 2, then 4.
+- [ ] Observe how the clusters change.
