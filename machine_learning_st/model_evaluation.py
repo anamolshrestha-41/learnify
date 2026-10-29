@@ -1,4 +1,4 @@
-from sklearn.metrics import confusion_matrix, accuracy_score,  precision_score, recall_score, f1_score, classification_report, precision_recall_curve, average_precision_score
+from sklearn.metrics import confusion_matrix, accuracy_score,  precision_score, recall_score, f1_score, classification_report, precision_recall_curve, average_precision_score, mean_absolute_error, mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 y_true=(
     [1]*36 + [0]*64
@@ -51,3 +51,12 @@ for threshold in [0.3, 0.5, 0.7]:
     plt.show()
     plt.close()
     print(f"Average Precision: ", round(average_precision,3))
+
+y_actual = [4, 2, 5, 1, 3]
+y_predicted = [3, 2, 4, 2, 5]
+mae= mean_absolute_error(y_actual, y_predicted)
+rmse= mean_squared_error(y_actual, y_predicted) ** 0.5
+r2= r2_score(y_actual, y_predicted)
+print(f"Mean Absoulute Error: {mae:.2f}")
+print(f"Root Mean Squared Error: {rmse:.2f}")
+print(f"R2Score: {r2:.2f}")
