@@ -1,0 +1,20 @@
+{
+    "model_name": "Random Forest",
+    "features": [
+        "shot_distance",
+        "shot_angle",
+        "defensive_pressure",
+        "goalkeeper_distance"
+    ],
+    "target": "goal",
+    "selection_metric": "Average Precision",
+    "best_cv_average_precision": 0.7698809523809522,
+    "test_metrics": {
+        "Accuracy": 0.8333333333333334,
+        "Precision": 1.0,
+        "Recall": 0.5,
+        "F1-Score": 0.6666666666666666,
+        "Balanced Accuracy": 1.0,
+        "Average Precision": 0.8928571428571428
+    }
+}
