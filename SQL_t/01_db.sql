@@ -70,4 +70,135 @@ WHERE player_id=105;
 
 -- FINAL DATA
 SELECT * FROM players;
-SELECT * FROM teams;
+SELECT * FROM teams;-- tables creation
+
+SELECT * FROM players
+WHERE age BETWEEN 25 AND 35;
+
+SELECT * FROM players
+WHERE position IN ('Forward', 'Midfilders');
+
+SELECT * FROM players
+WHERE NOT team_id=1;
+
+SELECT * FROM players
+WHERE team_id IN(1, 2, 3);
+
+SELECT * FROM players
+WHERE age BETWEEN 20 AND 30;
+
+SELECT * FROM players
+WHERE player_name LIKE 'M%';
+
+SELECT * FROM players
+WHERE player_name LIKE '%a%';
+
+SELECT * FROM players
+WHERE team_id IS NULL;
+
+SELECT * FROM players
+WHERE team_id IS NOT NULL;
+
+SELECT player_name, age,
+CASE
+WHEN age < 25 THEN 'Young'
+WHEN age BETWEEN 25 AND 32 THEN 'EXPERIENCED'
+ELSE 'ETERAN'
+END AS category
+FROM players;
+
+-- COUNT ALL PLAYERS
+SELECT COUNT(*) AS total_players
+FROM players;
+
+-- Average age of players
+SELECT AVG(age) AS average_age
+FROM players;
+
+-- OLDEST AND YOUNGEST PLAYER
+SELECT MIN(age) AS youngest_player
+FROM players;
+SELECT MAX(age) AS oldest_player
+FROM players;
+
+-- total goal scored
+SELECT SUM(goals) AS total_goals
+FROM players;
+
+--Players in each position
+SELECT position, COUNT(*) AS total_players
+FROM players
+GROUP BY position;
+
+-- avg age in each position
+SELECT position, AVG(age) as average_age
+FROM players
+GROUP BY position;
+
+--position containing more than 2 players
+SELECT position, COUNT(*) AS total_players
+FROM players
+GROUP BY position
+HAVING COUNT(*)>2;
+
+-- total goals scored by players older than 25
+SELECT age, SUM(goals) as total_goals
+FROM players
+GROUP BY age
+HAVING age > 25;
+
+-- positions by average age, highest first
+SELECT position, AVG(age) as average_age
+FROM players
+GROUP BY position
+ORDER BY average_age DESC;
+
+-- INNER JOIN: RETURNS only records that have matching values in both tables
+SELECT players.player_name, teams.team_name
+FROM players
+INNER JOIN teams
+ON players.team_id= teams.team_id;
+
+-- Display all players including those without a team, using LEFT JOIN
+SELECT players.player_name, teams.team_name
+FROM players
+LEFT JOIN teams
+ON players.team_id= teams.team_id;
+
+-- Display all teams, including teams without players, using LEFT JOIN
+SELECT players.player_name, teams.team_name
+FROM teams
+LEFT JOIN players
+ON players.team_id=teams.team_id;
+
+--Find players who belongs to the ame team using self join
+SELECT p1.player_name AS player1, p2.player_name AS player2, t.team_name
+FROM players p1
+INNER JOIN players p2 
+ON p1.team_id=p2.team_id 
+WHERE p1.player_id<>p2.player_id;
+
+--Display player names, team names, goals, and assists by joining three tables.
+SELECT p.player_name, t.team_name, p.goals, p.assists
+FROM players p
+INNER JOIN teams t
+ON p.team_id=t.team_id
+JOIN player_matches pm
+ON p.player_id=pm.player_id;
+
+-- Calculate total goal scored by each team
+SELECT t.team_name, SUM(p.goals) AS total_goals
+FROM teams t
+JOIN players p
+ON t.team_id=p.team_id
+JOIN player_matches pm
+ON p.player_id=pm.player_id
+GROUP BY t.team_name
+ORDER BY total_goals DESC;
+
+-- FInd the number of players in each team
+SELECT t.team_name, COUNT(p.player_id) AS total_players
+FROM teams t
+JOIN players p
+ON t.team_id=p.team_id
+GROUP BY t.team_name;

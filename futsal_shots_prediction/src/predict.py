@@ -2,7 +2,8 @@ import joblib
 import pandas as pd
 from pathlib import Path
 
-model=joblib.load("../models/best_futsal_model.pkl")
+MODEL_PATH = Path(__file__).resolve().parent.parent / "models" / "best_futsal_model.pkl"
+model=joblib.load(MODEL_PATH)
 def predict_goal(shot_distance, shot_angle, defensive_pressure, goalkeeper_distance):
     input_data=pd.DataFrame([{
         "shot_distance": shot_distance,
