@@ -202,3 +202,114 @@ FROM teams t
 JOIN players p
 ON t.team_id=p.team_id
 GROUP BY t.team_name;
+
+-- Find players older than the avg age
+SELECT player_name, age FROM players
+WHERE age > (SELECT AVG(age) FROM players );
+
+-- Find players belonginig to Barca or Real Madrid  using IN
+SELECT player_name FROM players
+WHERE team_id IN(
+    SELECT team_id FROM teams
+    WHERE team_name IN ('BARCA', 'REAL MADRID')
+);
+
+--Find teams that have at least one player using EXISTS
+SELECT team_name FROM teams t WHERE EXISTS(
+    SELECT 1 FROM players p
+    WHERE p.team_id=t.team_id
+);
+
+-- Find players older than the avg age of their position
+SELECT player_name, age, position 
+FROM players p
+    WHERE age>(
+        SELECT AVG(age) FROM players
+        WHERE position=p.position
+    );
+
+-- Use a CTE to calculate avg player age.
+WITH avg_age AS(
+    SELECT AVG(age) AS average_age
+    FROM players
+)
+SELECT player_name, age FROM players
+WHERE age > (SELECT average_age FROM avg_age);
+
+-- USE two CTEs to find players who scored more than 10 goals
+WITH player_goals AS (
+    SELECT player_id, SUM(goals) AS total_goals
+    FROM player_matches
+    GROUP BY player_id
+),
+high_score AS(
+    SELECT * FROM player_goals
+    WHERE total_goals>10
+)
+SELECT p.player_name, hg.total_goals
+FROM high_score hg
+JOIN players p
+ON hg.player_id=p.player_id;
+
+-- Combine player and team names using UNION
+SELECT player_name AS name FROM players
+UNION
+SELECT team_name AS name FROM teams;
+
+-- REPEAT USING UNION ALL
+SELECT player_name as name FROM players
+UNION ALL
+SELECT team_name AS name FROM teams;
+
+-- Find common name using intersect
+SELECT player_name AS name FROM players
+INTERSECT
+SELECT team_name AS name FROM teams;
+
+-- Find player names that do not appear in the team names using EXCEPT
+SELECT player_name AS name FROM players
+EXCEPT
+SELECT team_name AS name FROM teams;
+
+-- display every player with overall avg goals
+SELECT player_name, goals, AVG(goals) OVER() AS overall_avg_goals FROM players;
+
+-- calculate avg goals by position using partition by
+SELECT player_name, position, goals, AVG(goals) OVER(PARTITION by position) AS p_avg FROM players;
+
+-- rank players by goal using row number()
+SELECT player_name, goals, ROW_NUMBER() OVER(ORDER BY goals DESC) AS r_goals FROM players;
+
+--Rank Players using RANK
+SELECT player_name, goals RANK() OVER(ORDER BY goals DESC) AS rank_goals FROM players;
+
+-- RANK players using DENSE RANK()
+SELECT player_name, goals, DENSE_RANK() OVER (ORDER BY goals DESC) AS d_rank_goals FROM players;
+
+-- Find the Top Three players in each position.
+WITH player_ranking AS(
+    select player_name, position, goals, RANK() OVER(PARTITON BY position ORDER BY goals DESC) AS goal_rank FROM players
+)
+SELECT * FROM player_ranking
+WHERE goal_rank<=3;
+
+--Compare each player's goals with their previous match using LAG()
+SELECT player_id, match_id, goals, LAG(goals) OVER (PARTITION BY player_id ORDER BY match_id) AS prev_goals FROM players;
+
+-- Display the next match's goal using LEAD()
+SELECT player_id, match_id, goals, LEAD(goals) OVER(PARTITION BY player_id ORDER BY match_id) AS next_goals FROM players;
+
+-- Caclculate running goals for every player.
+SELECT player_id, match_id, goals, SUM(goals) OVER(PARTITION BY player_id
+ORDER BY match_id
+ROW BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS  running_goals
+FROM players;
+
+-- Calculate a three_match moving average
+SELECT player_id, match_id, goals, AVG(goals) OVER(PARTITION BY player_id ORDER BY match_id
+ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_average FROM player_matches;
+
+-- Fnd eachh position's highest and lowest goal count
+SELECT position, MAX(goals) AS highest_goals, MIN(goals) AS lowest_goals
+FROM players
+GROUP BY position;
