@@ -313,3 +313,122 @@ ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS moving_average FROM player_matches;
 SELECT position, MAX(goals) AS highest_goals, MIN(goals) AS lowest_goals
 FROM players
 GROUP BY position;
+
+-- Create a player_profile table with one:one relationship
+CREATE TABLE player_profile(
+    profile_id INTEGER PRIMARY KEY,
+    player_id INTEGER UNIQUE REFERENCES players(player_id)
+);
+
+-- Create a player_matches table with a composite primary key
+CREATE TABLE player_matches(
+    player_id INTEGER,
+    match_id INTEGER,
+    goals INTEGER DEFAULT 0,
+    assists INTEGER DEFAULT 0,
+    PRIMARY KEY(player_id, match_id)
+);
+
+-- ADD a check constrain to prevent negative goals
+ALTER TABLE players
+ADD CONSTRAINT positive_goals
+CHECK (goals>=0);
+
+--Add a NOT NULL constraint to player names.
+ALTER TABLE players
+ADD CONSTRAINT not_null_player_names
+NOT NULL player_names;
+
+-- Create an index on player_name
+CREATE INDEX player_index ON players(player_name);
+
+-- EXPLAIN ANALYZE RUN ON PLAYER SEARCH
+EXPLAIN ANALYZE
+SELECT * FROM PLAYERS
+WHERE player_name="Messi";
+
+-- Create a transaction that updates a player's statistics
+BEGIN;
+UPDATE players
+SET goal=goal+1
+WHERE player_id=101;
+COMMIT;
+
+--FIND THE TOP 10 GOAL SCORERS
+SELECT player_id, SUM(goals) as total_goals
+FROM players
+GROUP BY player_id
+ORDER BY total_goals DESC
+LIMIT 10;
+
+--Calculate avg goals per player
+SELECT player_id, COUNT(*) AS matches_played, SUM(goals) AS total_goals, AVG(age) AS avg_age
+FROM player_matches
+GROUP BY player_id;
+
+-- FInd the total goal scored each months
+SELECT DATE_TRUNC('month', month_date) AS month, COUNT(*) AS total_matches FROM matches
+GROUP BY DATE_TRUNC('month', month_date)
+ORDER BY month;
+
+-- Compare monthly goals using LAG().
+SELECT DATE_TRUNC('month', month_date) AS month,
+LAG(COUNT(*)) OVER(ORDER BY DATE_TRUNC('month', month_date)) AS prev_month_goals,
+COUNT(*) AS current_month_goals
+FROM matches
+GROUP BY month
+ORDER BY month;
+
+-- Calculate each team's win percentage
+SELECT t.team_name, COUNT(*) AS total_matches,
+SUM(ROUND(100.0* CASE
+WHEN m.home_team_id=t.team_id AND m.home_team_score>m.away_team_score THEN 1
+WHEN m.away_team_id=t.team_id AND m.away_team_score>m.home_team_score THEN 1
+ELSE 0
+END)) AS wins
+FROM teams t
+JOIN matches m
+ON t.team_id IN (m.home_team_id, m.away_team_id)
+GROUP BY t.team_name
+ORDER BY wins DESC;
+
+-- Group players by jjoining year.
+SELECT EXTRACT (YEAR FROM join_date) AS joining_year, COUNT(*) AS total_players, AVG(age) AS avg_age
+FROM players
+GROUP BY EXTRACT(YEAR FROM join_date)
+ORDER BY joining_year;
+
+-- Find players with missing ages
+SELECT * FROM players
+WHERE age IS NULL;
+
+-- Find duplicate player names.
+SELECT player_name, COUNT(*) AS name_count
+FROM players
+GROUP BY player_name
+HAVING COUNT(*)>1;
+
+-- Create high, medium, and low scorer categories
+SELECT player_id, SUM(goals) AS total_goals,
+CASE WHEN SUM(goals)>20 THEN 'HIGH SCORER'
+WHEN SUM(goals) BETWEEN 10 AND 20 THEN 'MEDIUM SCORER'
+ELSE 'LOW SCORER'
+END AS scorer_category
+FROM player_matches
+GROUP BY player_id;
+
+-- Prepare a player performance dataset for ML
+SELECT p.player_id, p.player_name, p.player_position,
+COUNT(pm.match_id) AS matches_played,
+COALESCE(SUM(pm.goals), 0) AS total_goals,
+COALESCE (SUM(pm.assists), 0) AS total_assists,
+COALESCE (AVG(pm.minutes_played), 0) AS total_minutes_played,
+CASE WHEN total_goals>=20 THEN 'HIGH'
+WHEN total_goals BETWEEN 10 and 20 THEN 'MEDIUM'
+ELSE 'LOW'
+END AS performance_category
+FROM players p
+LEFT JOIN player_matches pm
+ON p.player_id=pm.player_id
+GROUP BY p.player_id, p.player_name, p.player_position
+ORDER BY total_goals DESC;
