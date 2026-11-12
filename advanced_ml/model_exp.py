@@ -2,6 +2,7 @@ from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
+import matplotlib.pyplot as plt
 
 X, y = make_classification(
     n_samples=1000,
@@ -28,3 +29,16 @@ importance=pd.DataFrame({
     "Importance":model.feature_importances_
 }).sort_values(by="Importance", ascending=False)
 print(importance)
+
+importance_df=pd.DataFrame(importance)
+
+plt.figure(figsize=(9, 5))
+plt.bar(
+    importance_df["Features"],
+    importance_df["Importance"]
+)
+plt.xlabel("Importance")
+plt.ylabel("Features")
+plt.title("Random Forest Feature Importance")
+plt.tight_layout()
+plt.show()
