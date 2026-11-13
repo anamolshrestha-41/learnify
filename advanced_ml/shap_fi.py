@@ -10,7 +10,7 @@ X, y=make_classification(
     n_informative=3,
     random_state=42
 )
-feature_names=["recent_form", "defensive_strength", "attacking_strength", "posession"]
+feature_names=["recent_form", "defensive_strength", "attacking_strength", "possession"]
 X=pd.DataFrame(X, columns=feature_names)
 X_train, X_test, y_train, y_test=train_test_split(
     X,
@@ -27,3 +27,16 @@ shap_values=explainer(X_test)
 print(shap_values.shape)
 shap.plots.waterfall(shap_values[0])
 shap.plots.bar(shap_values)
+# Dependency plot for possession
+shap.plots.scatter(shap_values[:, feature_names[3]])
+shap.plots.scatter(
+    shap_values[:, "recent_form"],
+    color=shap_values[:, "defensive_strength"]
+)
+#automatic interaction coloring
+shap.plots.scatter(shap_values[:,feature_names[1]], color= shap_values)
+#comparing multiple features.
+for feature in feature_names:
+    shap.plots.scatter(
+        shap_values[:, feature]
+    )
